@@ -48,19 +48,9 @@
 
 ☑ 몇몇 유명 연예인들은 이미 회원가입이 되어있습니다ㅎㅎ 누가 있는지 찾아보세요!
 
-<br>
+#### 기능 3 (유저 추천)
 
-### 기능 구현
-
-- [기능 B 구현1 - 유해한 이미지 필터링](https://github.com/boostcamp-2020/relay_14/wiki/%EA%B8%B0%EB%8A%A5-B-%EA%B5%AC%ED%98%841--%EC%9C%A0%ED%95%B4%ED%95%9C-%EC%9D%B4%EB%AF%B8%EC%A7%80-%ED%95%84%ED%84%B0%EB%A7%81)
-- [기능 B 구현2 - 친구 찾기](https://github.com/boostcamp-2020/relay_14/wiki/%EA%B8%B0%EB%8A%A5-B-%EA%B5%AC%ED%98%842-%EC%B9%9C%EA%B5%AC-%EC%B0%BE%EA%B8%B0)
-- [기능 B 배포](https://github.com/boostcamp-2020/relay_14/wiki/%EA%B8%B0%EB%8A%A5-B-%EB%B0%B0%ED%8F%AC)
-
-<br>
-
-### C 기능 구현
-- [서버 URL](https://relay-14-etcxu.run.goorm.io/)
-- NLP 서버 미작동으로 인해 일부 
+☑ 가입시 NLP에 의해 생성된 태그를 통해 비슷한 관심사를 가진 유저를 찾아보세요.
 
 <br>
 
@@ -73,3 +63,20 @@
 <br>
 
 [기능 B 회고 및 소감](https://github.com/boostcamp-2020/relay_14/wiki/%EA%B8%B0%EB%8A%A5-B-%ED%9A%8C%EA%B3%A0-%EB%B0%8F-%EC%86%8C%EA%B0%90)
+<br>
+
+### 기능 구현
+
+- [기능 B 구현1 - 유해한 이미지 필터링](https://github.com/boostcamp-2020/relay_14/wiki/%EA%B8%B0%EB%8A%A5-B-%EA%B5%AC%ED%98%841--%EC%9C%A0%ED%95%B4%ED%95%9C-%EC%9D%B4%EB%AF%B8%EC%A7%80-%ED%95%84%ED%84%B0%EB%A7%81)
+- [기능 B 구현2 - 친구 찾기](https://github.com/boostcamp-2020/relay_14/wiki/%EA%B8%B0%EB%8A%A5-B-%EA%B5%AC%ED%98%842-%EC%B9%9C%EA%B5%AC-%EC%B0%BE%EA%B8%B0)
+- [기능 B 배포](https://github.com/boostcamp-2020/relay_14/wiki/%EA%B8%B0%EB%8A%A5-B-%EB%B0%B0%ED%8F%AC)
+
+<br>
+
+## C 기능 구현
+- [서버 URL](https://relay-14-etcxu.run.goorm.io/)
+- NLP 서버 미작동으로 인해 일부 주석처리
+- GoormIDE를 통해 코드 작성 및 배포
+
+<br>
+
