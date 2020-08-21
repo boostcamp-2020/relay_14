@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { withRouter } from 'react-router-dom';
 import { Route, Link } from 'react-router-dom';
 import { Card, Avatar, Col, Typography, Row, Button } from 'antd';
@@ -9,11 +9,19 @@ import * as Yup from 'yup';
 import './SearchPage.css';
 import { useDispatch } from 'react-redux';
 import RecommandProfile from '../../modules/RecommanProfile/RecommandProfile';
+import { BACK_SERVER_URL } from '../../Config';
 const { Title } = Typography;
 const { Meta } = Card;
 
 function SearchPage(props) {
-  console.log(props);
+  const [recommandList, setRecommandList] = useState([
+    {
+      name: '이름',
+      image: 'https://user-images.githubusercontent.com/49899406/90865911-19922e00-e3ce-11ea-8c68-882fc6a71aa3.jpg',
+      tags: 5,
+    },
+  ]);
+
   //검색창 입력용
   const [key, setKey] = useState(props.location.state.key);
   const onChangeKey = (e) => {
@@ -30,17 +38,16 @@ function SearchPage(props) {
     }
   };
 
-  const searchVariable = {
-    keyword: key,
-  };
+  const searchVariable = useMemo(() => ({ keyword: key }), [key]);
 
   //검색 결과
   const [Users, setUsers] = useState([]);
 
   //페이지내에서 재 검색 하기 위한 코드
   const [find, setfind] = useState(0);
+
   useEffect(() => {
-    axios.post('https://relay14-server.herokuapp.com/api/users/searchUser', searchVariable).then((response) => {
+    axios.post(`${BACK_SERVER_URL}api/users/searchUser`, searchVariable).then((response) => {
       if (response.data.success) {
         setUsers(response.data.user);
       } else {
@@ -59,7 +66,7 @@ function SearchPage(props) {
       userFrom: props.user.userData,
     };
     axios
-      .post('https://relay14-server.herokuapp.com/api/follow/getlist', userVariable) //follow친구 목록 가져오기
+      .post(`${BACK_SERVER_URL}api/follow/getlist`, userVariable) //follow친구 목록 가져오기
       .then((response) => {
         if (response.data.success) {
           setFollow(response.data.user);
@@ -69,9 +76,9 @@ function SearchPage(props) {
       });
   }, [propData, props.user.userData]);
 
-  //유저목록 받아오기
+  // 유저목록 받아오기
   useEffect(() => {
-    axios.post('https://relay14-server.herokuapp.com/api/users/searchUser', searchVariable).then((response) => {
+    axios.post(`${BACK_SERVER_URL}api/users/searchUser`, searchVariable).then((response) => {
       //console.log(response)
       if (response.data.success) {
         setUsers(response.data.user);
@@ -83,7 +90,7 @@ function SearchPage(props) {
       userFrom: props.user.userData,
     };
     axios
-      .post('https://relay14-server.herokuapp.com/api/follow/getlist', userVariable) //follow친구 목록 가져오기
+      .post(`${BACK_SERVER_URL}api/follow/getlist`, userVariable) //follow친구 목록 가져오기
       .then((response) => {
         if (response.data.success) {
           setFollow(response.data.user);
@@ -92,6 +99,15 @@ function SearchPage(props) {
         }
       });
   }, [props.user.userData, searchVariable]);
+
+  useEffect(() => {
+    (() => {
+      // const { data } = axios.post(`${BACK_SERVER_URL}api/follow/?`);
+      // if (data) {
+      //   setRecommandList(data);
+      // }
+    })();
+  }, []);
 
   //voice recognition 기능 추가
   const commands = [
@@ -177,7 +193,9 @@ function SearchPage(props) {
           <div class="people_box">{renderCards}</div>
         </div>
         <aside className="section-find-recommand">
-          <RecommandProfile />
+          {recommandList.map((v) => (
+            <RecommandProfile key={`search_recommand_${v.name}`} data={v} />
+          ))}
         </aside>
       </div>
     </div>

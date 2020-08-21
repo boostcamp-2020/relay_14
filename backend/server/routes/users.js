@@ -275,9 +275,10 @@ router.post('/searchUser', async (req, res) => {
   console.log(req.body.keyword);
   var keyword = req.body.keyword;
   try {
-    await axios.get(flask_nlp_server + `/api/tag/` + encodeURI(keyword)).then((response) => {
-      if (response.data) {
-        let temps = response.data.taglist;
+    // await axios.get(flask_nlp_server + `/api/tag/` + encodeURI(keyword)).then((response) => {
+      // if (response.data) {
+        // let temps = response.data.taglist;
+	  let temps = [keyword];
         let data = [];
         if (temps.length < 2) {
           let temp = temps;
@@ -311,10 +312,10 @@ router.post('/searchUser', async (req, res) => {
           if (err) return res.status(400).send(err);
           res.status(200).json({ success: true, user });
         });
-      } else {
-        console.log('error:', response.data.parases);
-      }
-    });
+      // } else {
+      //   console.log('error:', response.data.parases);
+      // }
+    // });
   } catch (error) {
     console.log(error);
   }
